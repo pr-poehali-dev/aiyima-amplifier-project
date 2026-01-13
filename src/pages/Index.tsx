@@ -104,6 +104,45 @@ const Index = () => {
     }
   ];
 
+  const comparison = [
+    {
+      feature: "Мощность",
+      aiyima: "300 Вт",
+      competitor1: "200 Вт",
+      competitor2: "250 Вт"
+    },
+    {
+      feature: "Bluetooth",
+      aiyima: "5.1",
+      competitor1: "4.2",
+      competitor2: "5.0"
+    },
+    {
+      feature: "Пульт ДУ",
+      aiyima: "✓",
+      competitor1: "—",
+      competitor2: "✓"
+    },
+    {
+      feature: "LED дисплей",
+      aiyima: "✓",
+      competitor1: "—",
+      competitor2: "—"
+    },
+    {
+      feature: "Защита от перегрева",
+      aiyima: "✓",
+      competitor1: "✓",
+      competitor2: "—"
+    },
+    {
+      feature: "Цена",
+      aiyima: "$$",
+      competitor1: "$$$",
+      competitor2: "$$$"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       <div className="container mx-auto px-4 py-8">
@@ -222,6 +261,49 @@ const Index = () => {
               </Card>
             ))}
           </div>
+        </section>
+
+        <section className="mb-20">
+          <h2 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            Сравнение с конкурентами
+          </h2>
+          <p className="text-center text-gray-600 mb-12 text-lg">Убедитесь в преимуществах AIYIMA</p>
+          <div className="max-w-5xl mx-auto overflow-x-auto">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-gradient-to-r from-orange-500 to-purple-600 text-white">
+                    <th className="px-6 py-4 text-left font-bold text-lg">Характеристика</th>
+                    <th className="px-6 py-4 text-center font-bold text-lg bg-white/20">
+                      <div className="flex items-center justify-center gap-2">
+                        <Icon name="Trophy" size={20} />
+                        AIYIMA
+                      </div>
+                    </th>
+                    <th className="px-6 py-4 text-center font-semibold">Конкурент A</th>
+                    <th className="px-6 py-4 text-center font-semibold">Конкурент B</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparison.map((row, idx) => (
+                    <tr key={idx} className={`${idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-orange-50 transition-colors`}>
+                      <td className="px-6 py-4 font-semibold text-gray-900 border-b border-gray-200">{row.feature}</td>
+                      <td className="px-6 py-4 text-center border-b border-gray-200 bg-orange-50/50">
+                        <span className="inline-flex items-center justify-center font-bold text-orange-600 text-lg">
+                          {row.aiyima}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center text-gray-600 border-b border-gray-200">{row.competitor1}</td>
+                      <td className="px-6 py-4 text-center text-gray-600 border-b border-gray-200">{row.competitor2}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className="text-center mt-8 text-gray-600 text-sm">
+            * Данные актуальны на {new Date().toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}
+          </p>
         </section>
 
         <section className="mb-20 bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-12">
